@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -6,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-   
+    
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
     <title>Hello, world!</title>
@@ -16,22 +15,16 @@
     <div class="container pt-3 jumbotron">
         <nav class="navbar navbar-light bg-secondary justify-content-between">
             <a class="navbar-brand">USER DATA</a>
-            <form action="logout">
-            <input type="submit" class="btn btn-outline-dark my-2 my-sm-0" style="margin-left: 250%;" value="Logout">
-        </form>
-            <form class="form-inline" action="{% url 'search' %}" method="POST">
-              {% csrf_token %}
-              <input class="form-control mr-sm-2" name="username" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
+           
           </nav>
     <div class="pt-5"></div>
-    <form action="register">
+    <form action="addusr">
         <input type="submit" class="btn btn-primary btn-outline-primary" value="ADD USER">
     </form>
         <div class="pt-5">
-            
-          
+            {% for message in messages %}
+            <p style="color: red;">{{message}}</p>
+           {% endfor %}
             <table class="table">
                 <thead>
                   <tr>
@@ -43,22 +36,23 @@
                   </tr>
                 </thead>
                 <tbody>
-                   
+                    
                   <tr>
-                    <th scope="row">{{user.id}}</th>
-                    <td>{{user.first_name}}</td>
-                    <td>{{user.last_name}}</td>
-                    <td>{{user.email}}</td>
-                    <td>{{user.username}}</td>
-                    <td><a href="{% url 'delete' user.id %}" class="btn btn-danger btn-outline-danger " value="DELETE">DELETE </a></td>
-                    <td><a href="{% url 'update' user.id %}" class="btn btn-warning btn-outline-warning " value="UPDATE">UPDATE </a></td>
+                    <th scope="row"></th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    
+                   
                   </tr>
+  
                   </tbody>
             </table>
         </div>
     </div>
 </div>
-    
+   
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
