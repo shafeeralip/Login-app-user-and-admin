@@ -34,7 +34,7 @@ def login(request):
 
 @login_required(login_url='/')
 def admine(request):
-    user=User.objects.all()
+    user=User.objects.filter(is_superuser=False)
     return render(request,'admin.html',{'user':user})
 @login_required(login_url='/')
 def home(request):
@@ -52,10 +52,10 @@ def register(request):
         if password1==password2:
             if User.objects.filter(username=username).exists():
                 messages.info(request,'username already taken')
-                return HttpResponseRedirect(request.path_info)
+                return render(request, "register.html", dicti)
             elif User.objects.filter(email=email).exists():
-                 messages.info(request,'email already taken',dicti)
-                 return HttpResponseRedirect(request.path_info)
+                 messages.info(request,'email already taken')
+                 return render(request, "register.html", dicti)
 
             else:
                 user=User.objects.create_user(first_name=first_name,last_name=last_name,username=username,email=email,password=password1)
